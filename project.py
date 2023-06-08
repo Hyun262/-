@@ -7,7 +7,7 @@ scale = [261, 294, 329, 349, 392, 440, 493, 523]
 list = [2,1,2,1]
 list_1 = [5,4,5,4]
 list_2 = [7,7,7,7]
-term = [0.5,0.5,0.5,0.5]
+term = [0.3,0.3,0.3,0.3]
 
 # MQTT 설정
 mqtt_broker = "broker.emqx.io"
@@ -64,11 +64,11 @@ try:
     while True:
         distance = measure_distance()
 
-        if distance <= 40 and distance >= 20:
+        if distance <= 60 and distance >= 30:
             GPIO.output(yellow_led_pin, GPIO.HIGH)
-            time.sleep(0.5)
+            time.sleep(0.3)
             GPIO.output(yellow_led_pin, GPIO.LOW)
-            time.sleep(0.5)
+            time.sleep(0.1)
 
             p = GPIO.PWM(buzzer_pin, 100)
             p.start(100)
@@ -80,11 +80,11 @@ try:
         
             p.stop()
 
-        elif distance < 20 and distance >= 5:
+        elif distance < 30 and distance >= 5:
             GPIO.output(red_led_pin, GPIO.HIGH)
-            time.sleep(0.5)
+            time.sleep(0.3)
             GPIO.output(red_led_pin, GPIO.LOW)
-            time.sleep(0.5)
+            time.sleep(0.1)
             p = GPIO.PWM(buzzer_pin, 100)
             p.start(100)
             p.ChangeDutyCycle(90)
@@ -97,9 +97,9 @@ try:
 
         elif distance < 5:
             GPIO.output(red_led_pin, GPIO.HIGH)
-            time.sleep(0.5)
+            time.sleep(0.3)
             GPIO.output(red_led_pin, GPIO.LOW)
-            time.sleep(0.5)
+            time.sleep(0.1)
             p = GPIO.PWM(buzzer_pin, 100)
             p.start(100)
             p.ChangeDutyCycle(90)
